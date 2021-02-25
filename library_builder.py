@@ -21,11 +21,14 @@ class library_builder():
         Checks to see if card is in downloaded library. If not then adds card to json library
         '''
 
-        if self.card_name in self.card_library.keys():
-            print(f'{self.card_name} already in library')
-        else:
-            self.add_card_to_library()
-            print(f'{self.card_name} added to library')
+        self.add_card_to_library()
+        print(f'{self.card_name} added to library')
+
+        # if self.card_name in self.card_library.keys():
+        #     print(f'{self.card_name} already in library')
+        # else:
+        #     self.add_card_to_library()
+        #     print(f'{self.card_name} added to library')
 
 
 
@@ -34,17 +37,17 @@ class library_builder():
     def add_card_to_library(self):
         api_name = self.card_name.replace(' ','+')
         r = requests.get("https://api.scryfall.com/cards/named?fuzzy="+ api_name)
+
+        key_attributes = ['name', 'mana_cost', 'cmc', 'type', 'power', 'toughness', 'colors', 'keywords', 'produced_mana', 'oracle_text']
+        card_summary_json = {}
         
         card_info_json = json.loads(r.text)
-        card_summary_json = {'name': card_info_json['name'],
-                             'mana_cost': card_info_json['mana_cost'],
-                             'cmc': card_info_json['cmc'],
-                             'type': card_info_json['type_line'],
-                             'power': card_info_json['power'],
-                             'toughness': card_info_json['toughness'],
-                             'colors': card_info_json['colors'],
-                             'keywords': card_info_json['keywords'],
-                             'details': card_info_json['oracle_text']}
+        for attribute in key_attributes:
+            if attribute in card_info_json.keys():
+                card_summary_json[attribute] = card_info_json[attribute]
+
+            else:
+                card_summary_json[attribute] = None
 
         self.card_library[self.card_name] = card_summary_json
         with open(self.library_path, 'w') as outfile:
