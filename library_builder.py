@@ -38,7 +38,7 @@ class library_builder():
         api_name = self.card_name.replace(' ','+')
         r = requests.get("https://api.scryfall.com/cards/named?fuzzy="+ api_name)
 
-        key_attributes = ['name', 'mana_cost', 'cmc', 'type', 'power', 'toughness', 'colors', 'keywords', 'produced_mana', 'oracle_text']
+        key_attributes = ['name', 'mana_cost', 'cmc', 'type_line', 'power', 'toughness', 'colors', 'keywords', 'produced_mana', 'oracle_text']
         card_summary_json = {}
         
         card_info_json = json.loads(r.text)
@@ -51,5 +51,5 @@ class library_builder():
 
         self.card_library[self.card_name] = card_summary_json
         with open(self.library_path, 'w') as outfile:
-            json.dump(self.card_library, outfile)
+            json.dump(self.card_library, outfile, indent=4, sort_keys=True)
 

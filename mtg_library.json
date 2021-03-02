@@ -1,1 +1,46 @@
-{"Raging Goblin": {"name": "Raging Goblin", "mana_cost": "{R}", "cmc": 1.0, "type": "Creature \u2014 Goblin Berserker", "power": "1", "toughness": "1", "colors": ["R"], "keywords": ["Haste"], "details": "Haste (This creature can attack and {T} as soon as it comes under your control.)"}, "Island": {"name": "Island", "mana_cost": "", "cmc": 0.0, "type": null, "power": null, "toughness": null, "colors": [], "keywords": [], "produced_mana": ["U"], "oracle_text": "({T}: Add {U}.)"}}
+{
+    "Lava Axe": {
+        "cmc": 5.0,
+        "colors": [
+            "R"
+        ],
+        "keywords": [],
+        "mana_cost": "{4}{R}",
+        "name": "Lava Axe",
+        "oracle_text": "Lava Axe deals 5 damage to target player or planeswalker.",
+        "power": null,
+        "produced_mana": null,
+        "toughness": null,
+        "type_line": "Sorcery"
+    },
+    "Mountain": {
+        "cmc": 0.0,
+        "colors": [],
+        "keywords": [],
+        "mana_cost": "",
+        "name": "Mountain",
+        "oracle_text": "({T}: Add {R}.)",
+        "power": null,
+        "produced_mana": [
+            "R"
+        ],
+        "toughness": null,
+        "type_line": "Basic Land \u2014 Mountain"
+    },
+    "Raging Goblin": {
+        "cmc": 1.0,
+        "colors": [
+            "R"
+        ],
+        "keywords": [
+            "Haste"
+        ],
+        "mana_cost": "{R}",
+        "name": "Raging Goblin",
+        "oracle_text": "Haste (This creature can attack and {T} as soon as it comes under your control.)",
+        "power": "1",
+        "produced_mana": null,
+        "toughness": "1",
+        "type_line": "Creature \u2014 Goblin Berserker"
+    }
+}
